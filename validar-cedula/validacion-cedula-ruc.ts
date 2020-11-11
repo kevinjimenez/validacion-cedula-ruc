@@ -22,22 +22,21 @@ export function validarCedulaRuc(cedulaRuc: string) {
     datosValidacionCedulaRuc.digitosCedulaORuc = digitosCedulaRuc
     if (esCiRucNatural) {
       datosValidacionCedulaRuc.tercerDigito = +tercerDigito;
-
       if (datosValidacionCedulaRuc.numeroCaracteres === 13) {
           console.log(datosValidacionCedulaRuc);
         datosValidacionCedulaRuc.tipo = TipoIdentificacionEnum.RucNatural;
-        verificarCedulaRuc(datosValidacionCedulaRuc);
       } else {
         datosValidacionCedulaRuc.tipo = TipoIdentificacionEnum.CI;
-        console.log(datosValidacionCedulaRuc);
         verificarCedulaRuc(datosValidacionCedulaRuc);
       }
     } else if (esRucPrivado) {
       datosValidacionCedulaRuc.tercerDigito = +tercerDigito;
       datosValidacionCedulaRuc.tipo = TipoIdentificacionEnum.RucPrivado;
+      verificarCedulaRuc(datosValidacionCedulaRuc);
     } else if (esRucPublico) {
       datosValidacionCedulaRuc.tercerDigito = +tercerDigito;
       datosValidacionCedulaRuc.tipo = TipoIdentificacionEnum.RucPublico;
+      verificarCedulaRuc(datosValidacionCedulaRuc);
     }
   } else {
     console.log('Sin cedula');

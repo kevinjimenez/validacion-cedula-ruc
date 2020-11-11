@@ -5,7 +5,7 @@
 
 ```javascript
 function validarCeudlaRucEcuador(cedulaORuc: string){
-  const resultadoValidacion = validarCedulaRuc('1234567890'); // return boolean
+  const resultadoValidacion = validarCedulaRuc(cedulaORuc); // return boolean
   console.log(resultadoValidacion)
 }
 ```

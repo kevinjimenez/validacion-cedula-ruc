@@ -163,6 +163,7 @@ export function verificarCedulaRuc(parametros: ConfiguracionValidacionCiRuc) {
     }
 }
 
+// validaciones
 function validacionesPreviasCedulaRuc(parametros) {
     const validacionInicial = validarInicioCiRuc(parametros);
     if (validacionInicial) {
@@ -202,7 +203,7 @@ function validacionesPreviasCedulaRuc(parametros) {
                 return false;
             }
         } else {
-            console.error('No existe provinvicia');
+            console.error('No existe provincia');
             return false;
         }
     } else {

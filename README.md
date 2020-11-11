@@ -1,7 +1,7 @@
 # Validacion cedula y ruc (privado y publico)
 ###  USO
 
-- usar la función export funcion **validarCedulaRuc()**, paraqmetro cedula en tipo string.
+- usar la función export funcion **validarCedulaRuc()**, parametro cedula en tipo string.
 
 ```javascritp
 function validarCeudlaRucEcuador(cedulaORuc: string){

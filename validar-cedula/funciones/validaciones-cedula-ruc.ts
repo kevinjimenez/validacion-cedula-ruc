@@ -13,7 +13,8 @@ function validarInicioCiRuc(parametos: ConfiguracionValidacionCiRuc) {
         return false;
     }
 
-    const soloDigitos = parametos.identificacion.match(/[0-9]+/g);
+    const soloDigitos = parametos.identificacion
+        .match(/[0-9]+/g);
     const noSonDigitos = soloDigitos === null;
     if (noSonDigitos) {
         return false;
@@ -24,14 +25,13 @@ function validarInicioCiRuc(parametos: ConfiguracionValidacionCiRuc) {
     if (numeroCaracteresIgualCIRUC) {
         return false;
     }
-
     return true;
 }
 
 // Validación de código de provincia (dos primeros dígitos de CI/RUC)
 function validarCodigoProvincia(parametos: ConfiguracionValidacionCiRuc) {
     const valoresEntre0Y24 =
-        parametos.dosPrimerosDigitos <= 0 || parametos.dosPrimerosDigitos >= 24;
+        parametos.dosPrimerosDigitos < 0 || parametos.dosPrimerosDigitos > 24;
     if (valoresEntre0Y24) {
         return false;
     }
@@ -44,7 +44,7 @@ function validarTercerDigito(parametos: ConfiguracionValidacionCiRuc) {
     switch (parametos.tipo) {
         case TipoIdentificacionEnum.CI:
         case TipoIdentificacionEnum.RucNatural:
-            if (parametos.tercerDigito < 0 || parametos.tercerDigito >= 5) {
+            if (parametos.tercerDigito < 0 || parametos.tercerDigito > 5) {
                 return false;
             }
             break;
@@ -80,16 +80,19 @@ function algoritmoModulo10(parametros: ConfiguracionValidacionCiRuc) {
     let total;
     total = 0;
     let valorPosicion;
-    parametros.digitosCedulaORuc.forEach((item, indice) => {
-        let digito;
-        digito = +item;
-        valorPosicion = digito * arregloCoeficientesPersonaNatural[indice];
-        if (valorPosicion >= 10) {
-            valorPosicion = valorPosicion.toString().split('');
-            valorPosicion = +valorPosicion[0] + +valorPosicion[1];
-        }
-        total = total + valorPosicion;
-    });
+    parametros
+        .digitosCedulaORuc
+        .forEach(
+            (item: string, indice: number) => {
+                let digito;
+                digito = +item;
+                valorPosicion = digito * arregloCoeficientesPersonaNatural[indice];
+                if (valorPosicion >= 10) {
+                    valorPosicion = valorPosicion.toString().split('');
+                    valorPosicion = +valorPosicion[0] + +valorPosicion[1];
+                }
+                total = total + valorPosicion;
+            });
     let residuo;
     residuo = total % 10;
     let resultado;
@@ -126,12 +129,13 @@ function algoritmoModulo11(parametros: ConfiguracionValidacionCiRuc) {
     total = 0;
     let valorPosicion;
     digitosCedulaORuc
-        .forEach((item, indice) => {
-            let digito;
-            digito = +item;
-            valorPosicion = digito * arregloCoeficientes[indice];
-            total = total + valorPosicion;
-        });
+        .forEach(
+            (item: string, indice: number) => {
+                let digito;
+                digito = +item;
+                valorPosicion = digito * arregloCoeficientes[indice];
+                total = total + valorPosicion;
+            });
     let residuo;
     residuo = total % 11;
     let resultado;

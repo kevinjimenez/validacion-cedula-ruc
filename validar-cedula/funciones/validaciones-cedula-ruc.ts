@@ -1,7 +1,7 @@
 import { TipoIdentificacionEnum } from '../enums/tipo-identificacion.enum';
 import { ARREGLO_COEFICIENTES_PERSONA_NATURAL } from '../constantes/arreglo-constantes-cedula-ruc';
 import { ConfiguracionValidacionCiRuc } from '../interfaces/configuracion-validacion-ci-ruc.interface';
-
+// validacion inicial
 function validarInicioCiRuc(parametos: ConfiguracionValidacionCiRuc) {
   const noExisteCiRuc =
     parametos.identificacion === undefined || parametos.identificacion === '';
@@ -97,8 +97,6 @@ function algoritmoModulo10(parametros: ConfiguracionValidacionCiRuc) {
     console.error('Dígitos iniciales no validan contra Dígito Idenficador');
     return false;
   }
-  console.log('valido papu');
-
   return true;
 }
 
@@ -139,9 +137,24 @@ function validacionesPreviasCedulaRuc(parametros) {
             console.log('no es privado');
           } else if (esRucPublico) {
             console.log('no es publico');
+          } else {
+            console.error('Error numero ruc o cedula');
+            return false;
           }
+        } else {
+          console.error('Error cuarta validaacion');
+          return false;
         }
+      } else {
+        console.error('Error tercera validacion');
+        return false;
       }
+    } else {
+      console.error('No existe provinvicia');
+      return false;
     }
+  } else {
+    console.error('Error validacion incial');
+    return false;
   }
 }

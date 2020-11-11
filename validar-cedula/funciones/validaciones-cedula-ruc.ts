@@ -100,6 +100,38 @@ function algoritmoModulo10(parametros: ConfiguracionValidacionCiRuc) {
   return true;
 }
 
+
+// function algoritmoModulo11(parametros: ConfiguracionValidacionCiRuc) {
+//   const arregloCoeficientesPersonaNatural = ARREGLO_COEFICIENTES_PERSONA_NATURAL;
+//   let total;
+//   total = 0;
+//   let valorPosicion;
+//   parametros.digitosCedulaORuc.forEach((item, indice) => {
+//     let digito;
+//     digito = +item;
+//     valorPosicion = digito * arregloCoeficientesPersonaNatural[indice];
+//     if (valorPosicion >= 10) {
+//       valorPosicion = valorPosicion.toString().split('');
+//       valorPosicion = +valorPosicion[0] + +valorPosicion[1];
+//     }
+//     total = total + valorPosicion;
+//   });
+//   let residuo;
+//   residuo = total % 10;
+//   let resultado;
+//   if (residuo === 0) {
+//     resultado = 0;
+//   } else {
+//     resultado = 10 - residuo;
+//   }
+//
+//   if (resultado !== parametros.digitoVerificador) {
+//     console.error('Dígitos iniciales no validan contra Dígito Idenficador');
+//     return false;
+//   }
+//   return true;
+// }
+
 // funcion Dios
 export function verificarCedulaRuc(parametros: ConfiguracionValidacionCiRuc) {
     console.log('ES cedula', parametros);

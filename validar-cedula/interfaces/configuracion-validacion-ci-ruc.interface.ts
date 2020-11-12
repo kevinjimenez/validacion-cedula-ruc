@@ -1,14 +1,15 @@
-import { TipoIdentificacionEnum } from '../enums/tipo-identificacion.enum';
+import {TipoIdentificacionEnum} from '../enums/tipo-identificacion.enum';
+
 export interface ConfiguracionValidacionCiRuc {
-  tipo?:
-    | TipoIdentificacionEnum.CI
-    | TipoIdentificacionEnum.RucNatural
-    | TipoIdentificacionEnum.RucPrivado
-    | TipoIdentificacionEnum.RucPublico;
-  numeroCaracteres?: number;
-  identificacion?: string;
-  digitoVerificador?: number,
-  dosPrimerosDigitos?: number,
-  tercerDigito?: number,
-  digitosCedulaORuc?: string[]
+    tipoCedulaORuc?:
+        | TipoIdentificacionEnum.CI
+        | TipoIdentificacionEnum.RucNatural
+        | TipoIdentificacionEnum.RucPrivado
+        | TipoIdentificacionEnum.RucPublico;
+    numeroCaracteresCedulaORuc?: number;
+    numeroCedulaORuc?: string;
+    digitoVerificador?: number,
+    dosPrimerosDigitos?: number,
+    tercerDigito?: number,
+    arregloDigitosCedulaORuc?: string[]
 }

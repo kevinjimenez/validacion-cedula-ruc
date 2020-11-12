@@ -1,59 +1,58 @@
-import { TipoIdentificacionEnum } from "./enums/tipo-identificacion.enum";
+import {TipoIdentificacionEnum} from "./enums/tipo-identificacion.enum";
 import {
-  validarInicioCiRuc,
-  verificarCedulaRuc,
+    validarInicioCiRuc,
+    iniciarValidacionesCedulaRuc,
 } from "./funciones/validaciones-cedula-ruc";
-import { ConfiguracionValidacionCiRuc } from "./interfaces/configuracion-validacion-ci-ruc.interface";
+import {ConfiguracionValidacionCiRuc} from "./interfaces/configuracion-validacion-ci-ruc.interface";
 
 export function validarCedulaRuc(cedulaRuc: string) {
-  const rucCedula = cedulaRuc ? cedulaRuc.trim() : '';
-  const datosValidacionCedulaRuc: ConfiguracionValidacionCiRuc = {};
-  datosValidacionCedulaRuc.identificacion = rucCedula;
-  datosValidacionCedulaRuc.numeroCaracteres = rucCedula.length;
-  const existeCedula = validarInicioCiRuc(datosValidacionCedulaRuc);
-  if (existeCedula) {
-    const rucCedula = cedulaRuc.trim();
-    const arregloDigitosCedula = datosValidacionCedulaRuc.identificacion.split(
-      ""
-    );
-    const dosPrimerosDigitos = +(
-      arregloDigitosCedula[0] + arregloDigitosCedula[1]
-    );
-    const tercerDigito = arregloDigitosCedula[2];
-    const esCiRucNatural = +tercerDigito >= 0 || +tercerDigito <= 5;
-    const esRucPrivado = +tercerDigito === 9;
-    const esRucPublico = +tercerDigito === 6;
-    const digitosCedulaRuc: string[] = datosValidacionCedulaRuc.identificacion
-      .split("")
-      .slice(0, 9);
-    datosValidacionCedulaRuc.digitoVerificador = +arregloDigitosCedula[9];
-    datosValidacionCedulaRuc.dosPrimerosDigitos = dosPrimerosDigitos;
-    datosValidacionCedulaRuc.digitosCedulaORuc = digitosCedulaRuc;
-    if (esCiRucNatural) {
-      datosValidacionCedulaRuc.tercerDigito = +tercerDigito;
-      if (datosValidacionCedulaRuc.numeroCaracteres === 13) {
-        console.log(datosValidacionCedulaRuc);
-        datosValidacionCedulaRuc.tipo = TipoIdentificacionEnum.RucNatural;
-        return verificarCedulaRuc(datosValidacionCedulaRuc);
-      } else {
-        datosValidacionCedulaRuc.tipo = TipoIdentificacionEnum.CI;
-        return verificarCedulaRuc(datosValidacionCedulaRuc);
-      }
-    } else if (esRucPrivado) {
-      datosValidacionCedulaRuc.tercerDigito = +tercerDigito;
-      datosValidacionCedulaRuc.tipo = TipoIdentificacionEnum.RucPrivado;
-      return verificarCedulaRuc(datosValidacionCedulaRuc);
-    } else if (esRucPublico) {
-      datosValidacionCedulaRuc.tercerDigito = +tercerDigito;
-      datosValidacionCedulaRuc.tipo = TipoIdentificacionEnum.RucPublico;
-      return verificarCedulaRuc(datosValidacionCedulaRuc);
+    const rucCedula = cedulaRuc ? cedulaRuc.trim() : '';
+    const datosValidacionCedulaRuc: ConfiguracionValidacionCiRuc = {};
+    datosValidacionCedulaRuc.numeroCedulaORuc = rucCedula;
+    datosValidacionCedulaRuc.numeroCaracteresCedulaORuc = rucCedula.length;
+    const existeCedula = validarInicioCiRuc(datosValidacionCedulaRuc);
+    if (existeCedula) {
+        const arregloDigitosCedula = datosValidacionCedulaRuc.numeroCedulaORuc.split(
+            ""
+        );
+        const dosPrimerosDigitos = +(
+            arregloDigitosCedula[0] + arregloDigitosCedula[1]
+        );
+        const tercerDigito = arregloDigitosCedula[2];
+        const esCiRucNatural = +tercerDigito >= 0 || +tercerDigito <= 5;
+        const esRucPrivado = +tercerDigito === 9;
+        const esRucPublico = +tercerDigito === 6;
+        const digitosCedulaRuc: string[] = datosValidacionCedulaRuc
+            .numeroCedulaORuc
+            .split("")
+            .slice(0, 9);
+        datosValidacionCedulaRuc.digitoVerificador = +arregloDigitosCedula[9];
+        datosValidacionCedulaRuc.dosPrimerosDigitos = dosPrimerosDigitos;
+        datosValidacionCedulaRuc.arregloDigitosCedulaORuc = digitosCedulaRuc;
+        if (esCiRucNatural) {
+            datosValidacionCedulaRuc.tercerDigito = +tercerDigito;
+            if (datosValidacionCedulaRuc.numeroCaracteresCedulaORuc === 13) {
+                datosValidacionCedulaRuc.tipoCedulaORuc = TipoIdentificacionEnum.RucNatural;
+                return iniciarValidacionesCedulaRuc(datosValidacionCedulaRuc);
+            } else {
+                datosValidacionCedulaRuc.tipoCedulaORuc = TipoIdentificacionEnum.CI;
+                return iniciarValidacionesCedulaRuc(datosValidacionCedulaRuc);
+            }
+        } else if (esRucPrivado) {
+            datosValidacionCedulaRuc.tercerDigito = +tercerDigito;
+            datosValidacionCedulaRuc.tipoCedulaORuc = TipoIdentificacionEnum.RucPrivado;
+            return iniciarValidacionesCedulaRuc(datosValidacionCedulaRuc);
+        } else if (esRucPublico) {
+            datosValidacionCedulaRuc.tercerDigito = +tercerDigito;
+            datosValidacionCedulaRuc.tipoCedulaORuc = TipoIdentificacionEnum.RucPublico;
+            return iniciarValidacionesCedulaRuc(datosValidacionCedulaRuc);
+        } else {
+            return false;
+        }
     } else {
-      return false;
+        console.log("No existe cedula o ruc !");
+        return false;
     }
-  } else {
-    console.log("Sin cedula");
-    return false;
-  }
 }
 
 console.log(validarCedulaRuc(undefined));

@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f11d19b7-2028-4dc5-a88f-d2f136895a49" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validar-cedula/constantes/arreglo-constantes-cedula-ruc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/validar-cedula/enums/tipo-identificacion.enum.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/validar-cedula/funciones/validaciones-cedula-ruc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/validar-cedula/funciones/validaciones-cedula-ruc.ts" beforeDir="false" afterPath="$PROJECT_DIR$/validar-cedula/funciones/validaciones-cedula-ruc.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validar-cedula/interfaces/configuracion-validacion-ci-ruc.interface.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/validar-cedula/interfaces/configuracion-validacion-ci-ruc.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/validar-cedula/interfaces/configuracion-validacion-ci-ruc.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validar-cedula/validacion-cedula-ruc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/validar-cedula/validacion-cedula-ruc.ts" beforeDir="false" afterPath="$PROJECT_DIR$/validar-cedula/validacion-cedula-ruc.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +34,8 @@
       <option name="presentableId" value="Default" />
       <updated>1605055806496</updated>
       <workItem from="1605055807514" duration="2343000" />
-      <workItem from="1605139463382" duration="1285000" />
+      <workItem from="1605139463382" duration="1883000" />
+      <workItem from="1605149107625" duration="599000" />
     </task>
     <servers />
   </component>

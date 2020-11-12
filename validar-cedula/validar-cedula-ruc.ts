@@ -2,7 +2,7 @@ import {TipoIdentificacionEnum} from "./enums/tipo-identificacion.enum";
 import {
     validarInicioCiRuc,
     iniciarValidacionesCedulaRuc,
-} from "./funciones/validaciones-cedula-ruc";
+} from "./funciones/iniciar-validaciones-cedula-ruc";
 import {ConfiguracionValidacionCiRuc} from "./interfaces/configuracion-validacion-ci-ruc.interface";
 
 export function validarCedulaRuc(cedulaRuc: string) {
